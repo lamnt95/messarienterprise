@@ -1,3 +1,29 @@
 p {
   font-family: Lato;
 }
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.w100 {
+  width: 100px;
+  max-width: 100px;
+  word-wrap: break-word;
+}
+
+.w200 {
+  width: 200px;
+}

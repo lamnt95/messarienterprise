@@ -1,4 +1,34 @@
-<hello name="{{ name }}"></hello>
 <p>
   {{ this.loading.txt }}
 </p>
+
+<table>
+  <tr>
+    <th class="w100">assets</th>
+    <th class="w100">importance</th>
+    <th class="w100">subCategory</th>
+    <th class="w100">status</th>
+    <th class="w100">eventDate</th>
+    <th class="w100">updateDate</th>
+    <th class="w200">eventName</th>
+    <th>details</th>
+    <th class="w100">Link</th>
+  </tr>
+  <tr *ngFor="let item of data">
+    <td class="w100">{{ item.assets }}</td>
+    <td class="w100">{{ item.importance }}</td>
+    <td class="w100">{{ item.subCategory }}</td>
+    <td class="w100">{{ item.status }}</td>
+    <td class="w100">{{ item.eventDate }}</td>
+    <td class="w100">{{ item.updateDate }}</td>
+    <td class="w200">{{ item.eventName }}</td>
+    <td>{{ item.details }}</td>
+    <td class="w100">
+      <ul>
+        <li *ngFor="let item2 of item.resources; let i2 = index">
+          <a [href]="item2">Link {{ i2 + 1 }}</a>
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>

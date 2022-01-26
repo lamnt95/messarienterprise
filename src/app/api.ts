@@ -26,17 +26,22 @@ export class Api {
         },
       ]);
       h2 = _.map(h, (i: Ent) => {
-        const resources = _.map(i.resources, 'link');
+        const resources = _.map(i.resources, 'link') || [];
         let i2 = new Ent();
         i2.clone(i);
+        i2.assets = _.join(i2.assets, ',');
         i2.resources = resources;
         if (i.eventDate != null) {
           const dt = new Date(i.eventDate * 1000);
-          i2.eventDate = `${dt.getDate()}/${dt.getMonth()}/${dt.getFullYear()}`;
+          i2.eventDate = `${dt.getDate()}/${
+            dt.getMonth() + 1
+          }/${dt.getFullYear()}`;
         }
         if (i.updateDate != null) {
           const dt = new Date(i.updateDate * 1000);
-          i2.updateDate = `${dt.getDate()}/${dt.getMonth()}/${dt.getFullYear()}`;
+          i2.updateDate = `${dt.getDate()}/${
+            dt.getMonth() + 1
+          }/${dt.getFullYear()}`;
         }
         return i2;
       });

@@ -1,6 +1,6 @@
 import { Component, OnInit, VERSION } from '@angular/core';
 import { Api } from './api';
-import algoliasearch from 'algoliasearch';
+import { Ent } from './ent';
 
 @Component({
   selector: 'my-app',
@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   loading = {
     txt: '',
   };
+  data: Ent[];
   constructor(private api: Api) {}
 
   ngOnInit() {
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit {
     this.api.get(this.loading).then((res) => {
       console.log('json', res);
       console.log('str', JSON.stringify(res));
-      console.table(res);
+      this.data = res;
     });
   }
 }
