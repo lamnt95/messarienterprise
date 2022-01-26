@@ -27,3 +27,19 @@ tr:nth-child(even) {
 .w200 {
   width: 200px;
 }
+
+.bl {
+  display: block;
+}
+
+.completed {
+  background: greenyellow;
+}
+
+.proposol {
+  background: lightseagreen;
+}
+
+.high {
+  background: lightcoral;
+}

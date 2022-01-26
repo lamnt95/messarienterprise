@@ -10,25 +10,41 @@
     <th class="w100">status</th>
     <th class="w100">eventDate</th>
     <th class="w100">updateDate</th>
+    <th class="w100">Link</th>
     <th class="w200">eventName</th>
     <th>details</th>
-    <th class="w100">Link</th>
   </tr>
   <tr *ngFor="let item of data">
     <td class="w100">{{ item.assets }}</td>
-    <td class="w100">{{ item.importance }}</td>
+    <td
+      class="w100"
+      [ngClass]="{
+        high: item.importance == 'High'
+      }"
+    >
+      {{ item.importance }}
+    </td>
     <td class="w100">{{ item.subCategory }}</td>
-    <td class="w100">{{ item.status }}</td>
+    <td
+      class="w100"
+      [ngClass]="{
+        completed: item.status == 'Completed',
+        proposol: item.status == 'Proposed'
+      }"
+    >
+      {{ item.status }}
+    </td>
     <td class="w100">{{ item.eventDate }}</td>
     <td class="w100">{{ item.updateDate }}</td>
+    <td class="w100">
+      <a
+        class="bl"
+        *ngFor="let item2 of item.resources; let i2 = index"
+        [href]="item2"
+        >Link {{ i2 + 1 }}</a
+      >
+    </td>
     <td class="w200">{{ item.eventName }}</td>
     <td>{{ item.details }}</td>
-    <td class="w100">
-      <ul>
-        <li *ngFor="let item2 of item.resources; let i2 = index">
-          <a [href]="item2">Link {{ i2 + 1 }}</a>
-        </li>
-      </ul>
-    </td>
   </tr>
 </table>
