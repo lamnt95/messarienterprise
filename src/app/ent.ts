@@ -1,15 +1,16 @@
 export class Ent {
+  importance: any;
+  subCategory: any;
+  status: any;
+  eventDate: any;
+  updateDate: any;
+  eventName: any;
+  details: any;
+
   assets: any[];
   category: any;
-  details: any;
-  eventDate: any;
   objectID: any;
-  eventName: any;
-  high: any;
   resources: any[];
-  status: any;
-  subCategory: any;
-  updateDate: any;
 
   clone(req: Ent) {
     this.assets = req.assets;
@@ -18,7 +19,7 @@ export class Ent {
     this.eventDate = req.eventDate;
     this.objectID = req.objectID;
     this.eventName = req.eventName;
-    this.high = req.high;
+    this.importance = req.importance;
     this.resources = req.resources;
     this.status = req.status;
     this.subCategory = req.subCategory;

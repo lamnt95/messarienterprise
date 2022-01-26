@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
     this.api.get(this.loading).then((res) => {
       console.log('json', res);
       console.log('str', JSON.stringify(res));
+      console.table(res);
     });
   }
 }
