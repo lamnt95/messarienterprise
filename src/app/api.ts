@@ -17,7 +17,6 @@ export class Api {
       loading.txt = `loading ${i}`;
       const b = cf[i];
       const r = await this.http.post(u, b).toPromise();
-      console.log(i, r);
 
       const h = _.get(r, 'results.0.hits');
       let h2 = _.sortBy(h, [
@@ -27,8 +26,10 @@ export class Api {
         },
       ]);
       h2 = _.map(h, (i: Ent) => {
+        const resources = _.map(i.resources, 'link');
         let i2 = new Ent();
         i2.clone(i);
+        i2.resources = resources;
         if (i.eventDate != null) {
           const dt = new Date(i.eventDate * 1000);
           i2.eventDate = `${dt.getDate()}/${dt.getMonth()}/${dt.getFullYear()}`;
