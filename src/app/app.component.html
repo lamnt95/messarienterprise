@@ -8,11 +8,11 @@
     <th class="w100">importance</th>
     <th class="w100">subCategory</th>
     <th class="w100">status</th>
-    <th class="w100">eventDate</th>
-    <th class="w100">updateDate</th>
+    <th class="w100">date</th>
     <th class="w100">Link</th>
     <th class="w200">eventName</th>
     <th>details</th>
+    <th>update</th>
   </tr>
   <tr *ngFor="let item of data">
     <td class="w100">{{ item.assets }}</td>
@@ -34,8 +34,7 @@
     >
       {{ item.status }}
     </td>
-    <td class="w100">{{ item.eventDate }}</td>
-    <td class="w100">{{ item.updateDate }}</td>
+    <td class="w100">{{ item.date }}</td>
     <td class="w100">
       <a
         class="bl"
@@ -46,5 +45,6 @@
     </td>
     <td class="w200">{{ item.eventName }}</td>
     <td>{{ item.details }}</td>
+    <td>{{ item.update }}</td>
   </tr>
 </table>

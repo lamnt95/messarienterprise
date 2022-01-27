@@ -12,6 +12,7 @@ export class Api {
     const u =
       'https://3b439zgym3-dsn.algolia.net/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20JavaScript%20(3.35.1)%3B%20Browser%20(lite)&x-algolia-application-id=3B439ZGYM3&x-algolia-api-key=14a0c8d17665d52e61167cc1b2ae9ff1';
     let hs = await this.get2();
+    console.log('get2', hs);
 
     for (let i = 0; i < _.size(cf); i++) {
       loading.txt = `loading ${i}`;
@@ -21,36 +22,43 @@ export class Api {
       hs = hs.concat(h);
     }
 
-    hs = _.sortBy(hs, [
-      function (o: Ent) {
-        if (o.updateDate != null) return o.updateDate;
-        return o.eventDate;
-      },
-    ]);
     hs = _.map(hs, (i: Ent) => {
       const resources = _.map(i.resources, 'link') || [];
       let i2 = new Ent();
       i2.clone(i);
       i2.assets = _.join(i2.assets, ',');
       i2.resources = resources;
+      let dt1 = '';
       if (i.eventDate != null) {
         const dt = new Date(i.eventDate * 1000);
-        i2.eventDate = `${dt.getDate()}/${
-          dt.getMonth() + 1
-        }/${dt.getFullYear()}`;
+        i2.eventDate = dt;
+        dt1 = dt1 + ` ${dt.getDate()}/${dt.getMonth() + 1}/${dt.getFullYear()}`;
       }
       if (i.updateDate != null) {
         const dt = new Date(i.updateDate * 1000);
-        i2.updateDate = `${dt.getDate()}/${
-          dt.getMonth() + 1
-        }/${dt.getFullYear()}`;
+        i2.updateDate = dt;
+        dt1 = dt1 + ` ${dt.getDate()}/${dt.getMonth() + 1}/${dt.getFullYear()}`;
       }
       return i2;
     });
 
+    hs.sort(function (a1: Ent, b1: Ent) {
+      return b1.updateDate - a1.updateDate;
+    });
+
+    const res = [];
+    const ids = [];
+    for (let i = 0; i < _.size(hs); i++) {
+      const it: Ent = hs[i];
+      const id = it.objectID;
+      if (!_.includes(ids, id)) {
+        res.push(it);
+      }
+    }
+
     loading.txt = '';
 
-    return Promise.resolve(hs);
+    return Promise.resolve(res);
   }
 
   async get2() {

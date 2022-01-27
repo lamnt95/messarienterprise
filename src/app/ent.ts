@@ -6,13 +6,14 @@ export class Ent {
   updateDate: any;
   eventName: any;
   details: any;
-
+  date: any;
   assets: any[];
   category: any;
   objectID: any;
   resources: any[];
-
+  update: any;
   clone(req: Ent) {
+    this.update = req.update;
     this.assets = req.assets;
     this.category = req.category;
     this.details = req.details;
