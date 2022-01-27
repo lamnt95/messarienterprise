@@ -12,7 +12,6 @@ export class Api {
     const u =
       'https://3b439zgym3-dsn.algolia.net/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20JavaScript%20(3.35.1)%3B%20Browser%20(lite)&x-algolia-application-id=3B439ZGYM3&x-algolia-api-key=14a0c8d17665d52e61167cc1b2ae9ff1';
     let hs = await this.get2();
-    console.log('get2', hs);
 
     for (let i = 0; i < _.size(cf); i++) {
       loading.txt = `loading ${i}`;
@@ -39,6 +38,7 @@ export class Api {
         i2.updateDate = dt;
         dt1 = dt1 + ` ${dt.getDate()}/${dt.getMonth() + 1}/${dt.getFullYear()}`;
       }
+      i2.date = dt1;
       return i2;
     });
 
