@@ -2,7 +2,31 @@
   {{ this.loading.txt }}
 </p>
 
-<table>
+<div class="tab">
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 1
+    }"
+    (click)="clickTab1()"
+  >
+    Enterprise
+  </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 2
+    }"
+    (click)="clickTab2()"
+  >
+    News
+  </button>
+</div>
+<br />
+<br />
+<br />
+
+<table *ngIf="tab == 1">
   <tr>
     <th class="w100">assets</th>
     <th class="w100">importance</th>
@@ -46,5 +70,26 @@
     <td class="w200">{{ item.eventName }}</td>
     <td>{{ item.details }}</td>
     <td>{{ item.update }}</td>
+  </tr>
+</table>
+
+<table *ngIf="tab == 2">
+  <tr>
+    <th>publishDate</th>
+    <th>title</th>
+
+    <th>assets</th>
+    <th>subType</th>
+    <th>Link</th>
+  </tr>
+  <tr *ngFor="let item of data2">
+    <td>{{ item.publishDate }}</td>
+    <td>{{ item.title }}</td>
+    <td>{{ item.assets }}</td>
+    <td>{{ item.subType }}</td>
+
+    <td>
+      <a class="bl" [href]="item.link">{{ item.source }}</a>
+    </td>
   </tr>
 </table>

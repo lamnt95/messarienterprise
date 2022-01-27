@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Renderer2 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as _ from 'lodash';
 import { cf } from './calendar';
 import { Ent } from './ent';
+import { Ent2 } from './ent2';
 
 @Injectable()
 export class Api {
@@ -14,7 +15,7 @@ export class Api {
     let hs = await this.get2();
 
     for (let i = 0; i < _.size(cf); i++) {
-      loading.txt = `loading ${i}`;
+      loading.txt = `Loading ${i}`;
       const b = cf[i];
       const r = await this.http.post(u, b).toPromise();
       const h = _.get(r, 'results.0.hits');
@@ -78,5 +79,50 @@ export class Api {
     }
 
     return Promise.resolve(hs);
+  }
+
+  async get3() {
+    const u = 'https://graphql.messari.io/query';
+    let hs = [];
+    let a = true;
+    let after = 1;
+    const b = {
+      operationName: 'AggregatedContents',
+      variables: {
+        first: 100000,
+        where: {
+          title_like: null,
+          assetSlugs_in: null,
+          subTypes_in: ['OFFICIAL_PROJECT_UPDATES', 'RESEARCH'],
+        },
+        after: '0',
+      },
+      query:
+        'query AggregatedContents($first: Int, $after: PaginationCursor, $last: Int, $before: PaginationCursor, $where: AggregatedContentWhereInput) {\n  aggregatedContents(\n    first: $first\n    after: $after\n    last: $last\n    before: $before\n    where: $where\n  ) {\n    totalCount\n    pageInfo {\n      hasPreviousPage\n      hasNextPage\n      startCursor\n      endCursor\n      __typename\n    }\n    edges {\n      cursor\n      node {\n        id\n        subType\n        type\n        title\n        publishDate\n        link\n        assets {\n          id\n          name\n          slug\n          symbol\n          __typename\n        }\n        source {\n          id\n          platform\n          link\n          creator {\n            id\n            name\n            link\n            slug\n            ... on AssetCreator {\n              id\n              name\n              slug\n              asset {\n                id\n                name\n                slug\n                logo\n                __typename\n              }\n              __typename\n            }\n            __typename\n          }\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n',
+    };
+    const r = await this.http.post(u, b).toPromise();
+
+    const r2 = _.get(r, 'data.aggregatedContents.edges');
+
+    const r3 = _.map(r2, 'node');
+
+    const r4 = _.map(r3, (it: Ent2) => {
+      const it2 = new Ent2();
+      it2.subType = it.subType;
+      it2.title = it.title;
+      const dt = new Date(it.publishDate * 1000);
+      it2.publishDate = ` ${dt.getDate()}/${
+        dt.getMonth() + 1
+      }/${dt.getFullYear()}`;
+      it2.link = it.link;
+      it2.assets = _.join(_.map(it.assets, 'name'), ',');
+      it2.source =
+        _.get(it, 'source.platform') + ' ' + _.get(it, 'source.creator.name');
+      if (it.subType == 'OFFICIAL_PROJECT_UPDATES') {
+        it2.subType = 'OFFICIAL';
+      }
+      return it2;
+    });
+    return Promise.resolve(r4);
   }
 }
