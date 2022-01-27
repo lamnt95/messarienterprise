@@ -75,16 +75,18 @@
 
 <table *ngIf="tab == 2">
   <tr>
-    <th>publishDate</th>
     <th>title</th>
+
+    <th>publishDate</th>
 
     <th>assets</th>
     <th>subType</th>
     <th>Link</th>
   </tr>
   <tr *ngFor="let item of data2">
-    <td>{{ item.publishDate }}</td>
     <td>{{ item.title }}</td>
+
+    <td>{{ item.publishDate }}</td>
     <td>{{ item.assets }}</td>
     <td>{{ item.subType }}</td>
 
