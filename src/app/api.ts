@@ -11,44 +11,63 @@ export class Api {
   async get(loading: any) {
     const u =
       'https://3b439zgym3-dsn.algolia.net/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20JavaScript%20(3.35.1)%3B%20Browser%20(lite)&x-algolia-application-id=3B439ZGYM3&x-algolia-api-key=14a0c8d17665d52e61167cc1b2ae9ff1';
-    let hs = [];
+    let hs = await this.get2();
 
     for (let i = 0; i < _.size(cf); i++) {
       loading.txt = `loading ${i}`;
       const b = cf[i];
       const r = await this.http.post(u, b).toPromise();
-
       const h = _.get(r, 'results.0.hits');
-      let h2 = _.sortBy(h, [
-        function (o: Ent) {
-          if (o.updateDate != null) return o.updateDate;
-          return o.eventDate;
-        },
-      ]);
-      h2 = _.map(h, (i: Ent) => {
-        const resources = _.map(i.resources, 'link') || [];
-        let i2 = new Ent();
-        i2.clone(i);
-        i2.assets = _.join(i2.assets, ',');
-        i2.resources = resources;
-        if (i.eventDate != null) {
-          const dt = new Date(i.eventDate * 1000);
-          i2.eventDate = `${dt.getDate()}/${
-            dt.getMonth() + 1
-          }/${dt.getFullYear()}`;
-        }
-        if (i.updateDate != null) {
-          const dt = new Date(i.updateDate * 1000);
-          i2.updateDate = `${dt.getDate()}/${
-            dt.getMonth() + 1
-          }/${dt.getFullYear()}`;
-        }
-        return i2;
-      });
-      hs = hs.concat(h2);
+      hs = hs.concat(h);
     }
 
+    hs = _.sortBy(hs, [
+      function (o: Ent) {
+        if (o.updateDate != null) return o.updateDate;
+        return o.eventDate;
+      },
+    ]);
+    hs = _.map(hs, (i: Ent) => {
+      const resources = _.map(i.resources, 'link') || [];
+      let i2 = new Ent();
+      i2.clone(i);
+      i2.assets = _.join(i2.assets, ',');
+      i2.resources = resources;
+      if (i.eventDate != null) {
+        const dt = new Date(i.eventDate * 1000);
+        i2.eventDate = `${dt.getDate()}/${
+          dt.getMonth() + 1
+        }/${dt.getFullYear()}`;
+      }
+      if (i.updateDate != null) {
+        const dt = new Date(i.updateDate * 1000);
+        i2.updateDate = `${dt.getDate()}/${
+          dt.getMonth() + 1
+        }/${dt.getFullYear()}`;
+      }
+      return i2;
+    });
+
     loading.txt = '';
+
+    return Promise.resolve(hs);
+  }
+
+  async get2() {
+    const u =
+      'https://3b439zgym3-2.algolianet.com/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20JavaScript%20(3.35.1)%3B%20Browser%20(lite)&x-algolia-application-id=3B439ZGYM3&x-algolia-api-key=14a0c8d17665d52e61167cc1b2ae9ff1';
+    let hs = [];
+    let a = true;
+    let page = 0;
+    while (a) {
+      const b = `{"requests":[{"indexName":"event","params":"highlightPreTag=%3Cais-highlight-0000000000%3E&highlightPostTag=%3C%2Fais-highlight-0000000000%3E&analyticsTags=%5B%22location_intel%22%2C%22intel_view_list%22%5D&maxValuesPerFacet=500&query=&page=${page}&hitsPerPage=1000&facets=%5B%22assets%22%2C%22category%22%2C%22importance%22%2C%22status%22%2C%22subCategory%22%2C%22tags%22%5D&tagFilters="}]}`;
+      const r = await this.http.post(u, b).toPromise();
+      const h = _.get(r, 'results.0.hits');
+      if (_.size(h) == 0) a = false;
+      hs = hs.concat(h);
+      page += 1;
+    }
+
     return Promise.resolve(hs);
   }
 }
