@@ -53,6 +53,7 @@ export class Api {
       const id = it.objectID;
       if (!_.includes(ids, id)) {
         res.push(it);
+        ids.push(id);
       }
     }
 
