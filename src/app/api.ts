@@ -125,4 +125,18 @@ export class Api {
     });
     return Promise.resolve(r4);
   }
+
+  async get4() {
+    const a1 = await this.http
+      .get(
+        'https://raw.githubusercontent.com/lamnt95/cryptocoindb/main/main/intel.json'
+      )
+      .toPromise();
+    const a2 = await this.http
+      .get(
+        'https://raw.githubusercontent.com/lamnt95/cryptocoindb/main/main/new.json'
+      )
+      .toPromise();
+    return Promise.resolve({ a1, a2 });
+  }
 }
