@@ -3,7 +3,7 @@
 </p>
 <button (click)="load()">Load</button>
 <div>
-<br />
+  <br />
 </div>
 <div class="tab">
   <button
@@ -48,13 +48,13 @@
 
 <table *ngIf="tab == 1">
   <tr>
-    <th class="w100">assets</th>
+    <th class="w100">Desc</th>
     <th class="w100">importance</th>
-    <th class="w100">subCategory</th>
+    <!-- <th class="w100">subCategory</th> -->
     <th class="w100">status</th>
     <th class="w100">date</th>
     <th class="w100">Link</th>
-    <th class="w200">eventName</th>
+    <!-- <th class="w200">eventName</th> -->
     <th>details</th>
     <th>update</th>
   </tr>
@@ -68,7 +68,7 @@
     >
       {{ item.importance }}
     </td>
-    <td class="w100">{{ item.subCategory }}</td>
+    <!-- <td class="w100">{{ item.subCategory }}</td> -->
     <td
       class="w100"
       [ngClass]="{
@@ -87,7 +87,7 @@
         >Link {{ i2 + 1 }}</a
       >
     </td>
-    <td class="w200">{{ item.eventName }}</td>
+    <!-- <td class="w200">{{ item.eventName }}</td> -->
     <td>{{ item.details }}</td>
     <td>{{ item.update }}</td>
   </tr>
