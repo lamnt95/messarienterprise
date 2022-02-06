@@ -46,6 +46,11 @@ export class AppComponent implements OnInit {
         it.date;
       return it;
     });
+    const a = _.uniq(_.map(this.data, 'importance'));
+    const b = _.uniq(_.map(this.data, 'status'));
+
+    console.log('a', a);
+    console.log('b', b);
     this.data2 = _.get(res, 'a2');
   }
 
