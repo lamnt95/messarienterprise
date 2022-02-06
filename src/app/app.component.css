@@ -103,3 +103,36 @@ body {
   border: 1px solid #ccc;
   border-top: none;
 }
+
+.medium {
+  display: inline-block;
+  background: yellow;
+  width: 15px;
+  height: 15px;
+  border: solid 1px #111;
+}
+
+.high {
+  display: block;
+  background: yellow;
+  width: 30px;
+  height: 15px;
+  border: solid 1px #111;
+}
+
+.rlt {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ilb {
+  display: flex;
+}
+
+.veryhigh {
+  display: block;
+  background: yellow;
+  width: 45px;
+  height: 15px;
+  border: solid 1px #111;
+}

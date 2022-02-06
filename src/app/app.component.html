@@ -59,7 +59,27 @@
     <!-- <th>update</th> -->
   </tr>
   <tr *ngFor="let item of data">
-    <td class="w300">{{ item.description }}</td>
+    <td class="w300">
+      <div class="rlt">
+        <div class="ilb">
+          <span>
+            <span class="medium" *ngIf="item.importance == 'Medium'"></span>
+            <span class="medium" *ngIf="item.importance == 'High'"></span>
+            <span class="medium" *ngIf="item.importance == 'High'"></span>
+            <span class="medium" *ngIf="item.importance == 'Very High'"></span>
+            <span class="medium" *ngIf="item.importance == 'Very High'"></span>
+            <span class="medium" *ngIf="item.importance == 'Very High'"></span>
+          </span>
+          <br *ngIf="item.importance != 'Low'" />
+        </div>
+        <div class="ilb">
+          <span>
+            <span class="medium" *ngIf="item.importance == 'Medium'"></span>
+          </span>
+        </div>
+      </div>
+      <div>{{ item.description }}</div>
+    </td>
     <!-- <td
       class="w100"
       [ngClass]="{
