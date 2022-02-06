@@ -12,6 +12,7 @@ export class Ent {
   objectID: any;
   resources: any[];
   update: any;
+  description: any;
   clone(req: Ent) {
     this.update = req.update;
     this.assets = req.assets;
@@ -25,5 +26,6 @@ export class Ent {
     this.status = req.status;
     this.subCategory = req.subCategory;
     this.updateDate = req.updateDate;
+    this.description = req.description;
   }
 }

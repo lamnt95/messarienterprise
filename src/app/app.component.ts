@@ -35,7 +35,11 @@ export class AppComponent implements OnInit {
 
   async ngOnInit() {
     const res = await this.api.get4();
-    this.data = _.get(res, 'a1');
+    this.data = _.map(_.get(res, 'a1'), (it: Ent) => {
+      it.description =
+        it.assets + ' - ' + it.subCategory + ' - ' + it.eventName;
+      return it;
+    });
     this.data2 = _.get(res, 'a2');
   }
 
