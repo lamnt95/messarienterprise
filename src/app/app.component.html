@@ -22,10 +22,23 @@
   >
     News
   </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 3
+    }"
+    (click)="clickTab()"
+  >
+    Research
+  </button>
 </div>
 <br />
 <br />
 <br />
+
+<div *ngIf="tab == 3">
+  <iframe src="https://lamnt95.github.io/" title="description"></iframe>
+</div>
 
 <table *ngIf="tab == 1">
   <tr>

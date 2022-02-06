@@ -29,6 +29,10 @@ export class AppComponent implements OnInit {
     this.tab = 2;
   }
 
+  clickTab3() {
+    this.tab = 3;
+  }
+
   async ngOnInit() {
     const res = await this.api.get4();
     this.data = _.get(res, 'a1');
