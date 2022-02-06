@@ -37,7 +37,13 @@ export class AppComponent implements OnInit {
     const res = await this.api.get4();
     this.data = _.map(_.get(res, 'a1'), (it: Ent) => {
       it.description =
-        it.assets + ' - ' + it.subCategory + ' - ' + it.eventName;
+        it.assets +
+        ' - ' +
+        it.subCategory +
+        ' - ' +
+        it.eventName +
+        ' - ' +
+        it.date;
       return it;
     });
     this.data2 = _.get(res, 'a2');

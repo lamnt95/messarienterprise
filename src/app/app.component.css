@@ -26,6 +26,14 @@ tr:nth-child(even) {
 
 .w200 {
   width: 200px;
+  max-width: 200px;
+  word-wrap: break-word;
+}
+
+.w300 {
+  width: 300px;
+  max-width: 300px;
+  word-wrap: break-word;
 }
 
 .ifr {
