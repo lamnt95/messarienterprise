@@ -126,14 +126,12 @@ body {
   width: 15px;
   height: 15px;
   border: solid 1px #111;
-  color: white;
 }
 
 .status_pending {
   display: inline-block;
   background: lightskyblue;
   width: 15px;
-  color: white;
   height: 15px;
   border: solid 1px #111;
 }
@@ -142,7 +140,6 @@ body {
   display: inline-block;
   background: lightsalmon;
   width: 15px;
-  color: white;
   height: 15px;
   border: solid 1px #111;
 }
@@ -151,7 +148,6 @@ body {
   display: inline-block;
   background: lightyellow;
   width: 15px;
-  color: white;
   height: 15px;
   border: solid 1px #111;
 }
