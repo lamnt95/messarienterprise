@@ -74,7 +74,41 @@
         </div>
         <div class="ilb">
           <span>
-            <span class="medium" *ngIf="item.importance == 'Medium'"></span>
+            <span class="status_completed" *ngIf="item.status == 'Completed'"
+              >V</span
+            >
+            <span class="status_completed" *ngIf="item.status == 'Proposed'"
+              >V</span
+            >
+            <span class="status_pending" *ngIf="item.status == 'Pending'"
+              >%</span
+            >
+            <span class="status_pending" *ngIf="item.status == 'In-Progress'"
+              >%</span
+            >
+            <span class="status_rejected" *ngIf="item.status == 'Canceled'"
+              >X</span
+            >
+            <span class="status_rejected" *ngIf="item.status == 'Rejected'"
+              >X</span
+            >
+            <span class="medium" *ngIf="item.status == 'Discussed'"></span>
+            <span class="medium" *ngIf="item.status == 'Discussed '"></span>
+            <span class="status_completed" *ngIf="item.status == 'Completed '"
+              >V</span
+            >
+            <span class="status_completed" *ngIf="item.status == 'Proposed '"
+              >V</span
+            >
+            <span class="status_pending" *ngIf="item.status == 'Pending '"
+              >%</span
+            >
+            <span class="status_rejected" *ngIf="item.status == 'Canceled '"
+              >X</span
+            >
+            <span class="status_pending" *ngIf="item.status == 'In-progress'"
+              >%</span
+            >
           </span>
         </div>
       </div>

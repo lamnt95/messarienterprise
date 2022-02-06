@@ -120,6 +120,30 @@ body {
   border: solid 1px #111;
 }
 
+.status_completed {
+  display: inline-block;
+  background: lightgreen;
+  width: 15px;
+  height: 15px;
+  border: solid 1px #111;
+}
+
+.status_pending {
+  display: inline-block;
+  background: lightskyblue;
+  width: 15px;
+  height: 15px;
+  border: solid 1px #111;
+}
+
+.status_rejected {
+  display: inline-block;
+  background: lightsalmon;
+  width: 15px;
+  height: 15px;
+  border: solid 1px #111;
+}
+
 .rlt {
   display: flex;
   justify-content: space-between;
