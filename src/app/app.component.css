@@ -28,6 +28,11 @@ tr:nth-child(even) {
   width: 200px;
 }
 
+.ifr {
+  width: 100%;
+  height: 800px;
+}
+
 .bl {
   display: block;
 }

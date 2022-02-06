@@ -2,7 +2,9 @@
   {{ this.loading.txt }}
 </p>
 <button (click)="load()">Load</button>
-
+<div>
+<br />
+</div>
 <div class="tab">
   <button
     class="tablinks"
@@ -27,7 +29,7 @@
     [ngClass]="{
       proposol: tab == 3
     }"
-    (click)="clickTab3(()"
+    (click)="clickTab3()"
   >
     Research
   </button>
@@ -37,7 +39,11 @@
 <br />
 
 <div *ngIf="tab == 3">
-  <iframe src="https://lamnt95.github.io/" title="description"></iframe>
+  <iframe
+    class="ifr"
+    src="https://lamnt95.github.io/"
+    title="description"
+  ></iframe>
 </div>
 
 <table *ngIf="tab == 1">
