@@ -51,7 +51,7 @@
     <th class="w300">Desc</th>
     <!-- <th class="w100">importance</th> -->
     <!-- <th class="w100">subCategory</th> -->
-    <!-- <th class="w100">status</th> -->
+    <th class="w100">status</th>
     <!-- <th class="w100">date</th> -->
     <th class="w100">Link</th>
     <!-- <th class="w200">eventName</th> -->
@@ -75,10 +75,10 @@
         <div class="ilb">
           <span>
             <span class="status_completed" *ngIf="item.status == 'Completed'"
-              >V</span
+              >v</span
             >
             <span class="status_completed" *ngIf="item.status == 'Proposed'"
-              >V</span
+              >v</span
             >
             <span class="status_pending" *ngIf="item.status == 'Pending'"
               >%</span
@@ -87,24 +87,28 @@
               >%</span
             >
             <span class="status_rejected" *ngIf="item.status == 'Canceled'"
-              >X</span
+              >x</span
             >
             <span class="status_rejected" *ngIf="item.status == 'Rejected'"
-              >X</span
+              >x</span
             >
-            <span class="medium" *ngIf="item.status == 'Discussed'"></span>
-            <span class="medium" *ngIf="item.status == 'Discussed '"></span>
+            <span class="status_discussed" *ngIf="item.status == 'Discussed'"
+              >ok</span
+            >
+            <span class="status_discussed" *ngIf="item.status == 'Discussed '"
+              >ok</span
+            >
             <span class="status_completed" *ngIf="item.status == 'Completed '"
-              >V</span
+              >v</span
             >
             <span class="status_completed" *ngIf="item.status == 'Proposed '"
-              >V</span
+              >v</span
             >
             <span class="status_pending" *ngIf="item.status == 'Pending '"
               >%</span
             >
             <span class="status_rejected" *ngIf="item.status == 'Canceled '"
-              >X</span
+              >x</span
             >
             <span class="status_pending" *ngIf="item.status == 'In-progress'"
               >%</span
@@ -123,7 +127,7 @@
       {{ item.importance }}
     </td> -->
     <!-- <td class="w100">{{ item.subCategory }}</td> -->
-    <!-- <td
+    <td
       class="w100"
       [ngClass]="{
         completed: item.status == 'Completed',
@@ -131,7 +135,7 @@
       }"
     >
       {{ item.status }}
-    </td> -->
+    </td>
     <!-- <td class="w100">{{ item.date }}</td> -->
     <td class="w100">
       <a
