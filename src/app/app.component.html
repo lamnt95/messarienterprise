@@ -13,7 +13,7 @@
     }"
     (click)="clickTab1()"
   >
-    Enterprise
+    Onchain Update
   </button>
   <button
     class="tablinks"
@@ -22,7 +22,7 @@
     }"
     (click)="clickTab2()"
   >
-    News
+    Official Update
   </button>
   <button
     class="tablinks"
@@ -31,7 +31,26 @@
     }"
     (click)="clickTab3()"
   >
-    Research
+    Research Messari
+  </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 16
+    }"
+    (click)="clickTab(16)"
+  >
+    Research Delphi
+  </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 17
+    }"
+    (click)="clickTab(17)"
+  >
+    Research theblock
+    <a href="https://www.theblockresearch.com/" target="_blank">...</a>
   </button>
   <button
     class="tablinks"
@@ -161,6 +180,22 @@
 <br />
 <br />
 <br />
+
+<div *ngIf="tab == 17">
+  <iframe
+    class="ifr"
+    src="https://www.theblockresearch.com/"
+    title="description"
+  ></iframe>
+</div>
+
+<div *ngIf="tab == 16">
+  <iframe
+    class="ifr"
+    src="https://members.delphidigital.io/"
+    title="description"
+  ></iframe>
+</div>
 
 <div *ngIf="tab == 15">
   <iframe
