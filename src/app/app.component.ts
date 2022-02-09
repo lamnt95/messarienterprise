@@ -33,6 +33,14 @@ export class AppComponent implements OnInit {
     this.tab = 3;
   }
 
+  clickTab4() {
+    this.tab = 4;
+  }
+
+  clickTab(tab) {
+    this.tab = tab;
+  }
+
   async ngOnInit() {
     const res = await this.api.get4();
     this.data = _.map(_.get(res, 'a1'), (it: Ent) => {

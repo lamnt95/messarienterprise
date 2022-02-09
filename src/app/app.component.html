@@ -33,10 +33,221 @@
   >
     Research
   </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 4
+    }"
+    (click)="clickTab4()"
+  >
+    TVL DefiLama
+  </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 5
+    }"
+    (click)="clickTab(5)"
+  >
+    TVL DefiPulse
+  </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 7
+    }"
+    (click)="clickTab(7)"
+  >
+    Revenue TokenTerminal
+  </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 12
+    }"
+    (click)="clickTab(12)"
+  >
+    Revenue Growjo
+  </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 8
+    }"
+    (click)="clickTab(8)"
+  >
+    Danh mục
+  </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 13
+    }"
+    (click)="clickTab(13)"
+  >
+    Gọi vốn
+  </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 6
+    }"
+    (click)="clickTab(6)"
+  >
+    Onchain Dune Analytics
+  </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 9
+    }"
+    (click)="clickTab(9)"
+  >
+    Onchain The Block
+    <a
+      target="_blank"
+      href="https://www.theblockcrypto.com/data/crypto-markets/spot"
+      >...</a
+    >
+  </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 10
+    }"
+    (click)="clickTab(10)"
+  >
+    Onchain CryptoQuant
+    <a
+      target="_blank"
+      href="https://cryptoquant.com/asset/btc/chart/exchange-flows"
+      >...</a
+    >
+  </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 11
+    }"
+    (click)="clickTab(11)"
+  >
+    Onchain CoinGlass
+  </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 14
+    }"
+    (click)="clickTab(14)"
+  >
+    Explorer Bitquery
+  </button>
+  <button
+    class="tablinks"
+    [ngClass]="{
+      proposol: tab == 15
+    }"
+    (click)="clickTab(15)"
+  >
+    Biểu đồ Blockchaincenter
+    <a target="_blank" href="https://www.blockchaincenter.net/">...</a>
+  </button>
 </div>
 <br />
 <br />
 <br />
+
+<div *ngIf="tab == 15">
+  <iframe
+    class="ifr"
+    src="https://www.blockchaincenter.net/"
+    title="description"
+  ></iframe>
+</div>
+
+<div *ngIf="tab == 14">
+  <iframe
+    class="ifr"
+    src="https://explorer.bitquery.io/"
+    title="description"
+  ></iframe>
+</div>
+
+<div *ngIf="tab == 13">
+  <iframe
+    class="ifr"
+    src="https://airtable.com/shrP7uEmnxbv7dUEV/tbllShMbhc5jooPRb/viwymTshkJuerbyeT"
+    title="description"
+  ></iframe>
+</div>
+
+<div *ngIf="tab == 12">
+  <iframe class="ifr" src="https://growjo.com/" title="description"></iframe>
+</div>
+
+<div *ngIf="tab == 11">
+  <iframe
+    class="ifr"
+    src="https://www.coinglass.com/FundingRate"
+    title="description"
+  ></iframe>
+</div>
+
+<div *ngIf="tab == 10">
+  <iframe
+    class="ifr"
+    src="https://cryptoquant.com/asset/btc/chart/exchange-flows"
+    title="description"
+  ></iframe>
+</div>
+
+<div *ngIf="tab == 9">
+  <iframe
+    class="ifr"
+    src="https://www.theblockcrypto.com/data/crypto-markets/spot"
+    title="description"
+  ></iframe>
+</div>
+
+<div *ngIf="tab == 8">
+  <iframe
+    class="ifr"
+    src="https://www.coingecko.com/vi/portfolios/public/BAh7BjoRcG9ydGZvbGlvX2lkaQOrX1k=--b66abee8a0a8940b39bc65e5a3118566f9d04d2b"
+    title="description"
+  ></iframe>
+</div>
+
+<div *ngIf="tab == 7">
+  <iframe
+    class="ifr"
+    src="https://www.tokenterminal.com/"
+    title="description"
+  ></iframe>
+</div>
+
+<div *ngIf="tab == 6">
+  <iframe
+    class="ifr"
+    src="https://dune.xyz/browse/dashboards"
+    title="description"
+  ></iframe>
+</div>
+
+<div *ngIf="tab == 5">
+  <iframe
+    class="ifr"
+    src="https://www.defipulse.com/"
+    title="description"
+  ></iframe>
+</div>
+
+<div *ngIf="tab == 4">
+  <iframe
+    class="ifr"
+    src="https://defillama.com/chains"
+    title="description"
+  ></iframe>
+</div>
 
 <div *ngIf="tab == 3">
   <iframe
