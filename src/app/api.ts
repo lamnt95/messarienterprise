@@ -139,4 +139,18 @@ export class Api {
       .toPromise();
     return Promise.resolve({ a1, a2 });
   }
+
+  async fetchMessari() {
+    await this.http
+      .get('https://java-crypto.herokuapp.com/post/fetchMessari?limit=10000')
+      .toPromise();
+    return Promise.resolve(1);
+  }
+
+  async loadcoin() {
+    await this.http
+      .get('https://node-crypto-git.herokuapp.com/coin')
+      .toPromise();
+    return Promise.resolve(1);
+  }
 }
