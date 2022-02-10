@@ -3,7 +3,7 @@ import { Api } from './api';
 import { Ent } from './ent';
 import { Ent2 } from './ent2';
 import * as _ from 'lodash';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'my-app',
