@@ -3,13 +3,12 @@ import { Api } from './api';
 import { Ent } from './ent';
 import { Ent2 } from './ent2';
 import * as _ from 'lodash';
-import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [Api, ActivatedRoute],
+  providers: [Api],
 })
 export class AppComponent implements OnInit {
   [x: string]: any;
@@ -20,7 +19,7 @@ export class AppComponent implements OnInit {
   data: Ent[];
   data2: Ent2[];
   tab = 1;
-  constructor(private api: Api, private route: ActivatedRoute) {}
+  constructor(private api: Api) {}
 
   clickTab1() {
     this.tab = 1;
@@ -62,17 +61,14 @@ export class AppComponent implements OnInit {
     // this.data2 = _.get(res, 'a2');
   }
 
+  tk = '';
   async load() {
-    this.route.queryParams.subscribe((params: Params) => {
-      const tk = params['tk'];
-      console.log('load', params, tk);
-      this.loading.txt = 'Loading ...';
-      // await this.api.fetchMessari();
-      this.api.loadcoin(tk);
-      // const r2 = await this.api.get(this.loading);
-      // console.log('news', JSON.stringify(r1));
-      // console.log('intel', JSON.stringify(r2));
-      this.loading.txt = 'Loading Success';
-    });
+    this.loading.txt = 'Loading ...';
+    // await this.api.fetchMessari();
+    this.api.loadcoin(this.tk);
+    // const r2 = await this.api.get(this.loading);
+    // console.log('news', JSON.stringify(r1));
+    // console.log('intel', JSON.stringify(r2));
+    this.loading.txt = 'Loading Success';
   }
 }
