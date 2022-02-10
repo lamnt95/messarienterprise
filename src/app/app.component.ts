@@ -65,6 +65,7 @@ export class AppComponent implements OnInit {
   async load() {
     this.route.queryParams.subscribe((params: Params) => {
       const tk = params['tk'];
+      console.log("load", params, tk)
       this.loading.txt = 'Loading ...';
     // await this.api.fetchMessari();
     await this.api.loadcoin(tk);
