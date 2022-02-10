@@ -11,7 +11,6 @@ import * as _ from 'lodash';
   providers: [Api],
 })
 export class AppComponent implements OnInit {
-  [x: string]: any;
   name = 'Angular ' + VERSION.major;
   loading = {
     txt: '',
@@ -63,7 +62,6 @@ export class AppComponent implements OnInit {
     this.data2 = _.get(res, 'a2');
   }
 
-  tk: any = '';
   async load() {
     this.loading.txt = 'Loading ...';
     const news = await this.api.get3();
