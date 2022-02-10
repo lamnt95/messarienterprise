@@ -9,7 +9,7 @@ import { ActivatedRoute, Params } from '@angular/router';
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [Api],
+  providers: [Api, ActivatedRoute],
 })
 export class AppComponent implements OnInit {
   [x: string]: any;
