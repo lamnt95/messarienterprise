@@ -62,14 +62,20 @@ export class AppComponent implements OnInit {
     this.data2 = _.get(res, 'a2');
   }
 
+  news: any = '';
+  intel: any = '';
+  research: any = '';
   async load() {
     this.loading.txt = 'Loading ...';
     const news = await this.api.get3();
     const intel = await this.api.get(this.loading);
     const research = await this.api.fetchMessari();
-    console.log('news', JSON.stringify(news));
-    console.log('intel', JSON.stringify(intel));
-    console.log('research', JSON.stringify(research));
+    this.intel = JSON.stringify(intel);
+    this.news = JSON.stringify(news);
+    this.research = JSON.stringify(research);
+    console.log('news', this.news);
+    console.log('intel', this.intel);
+    console.log('research', this.research);
     this.loading.txt = 'Loading Success';
   }
 }
