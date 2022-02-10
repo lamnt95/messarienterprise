@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   };
   data: Ent[];
   data2: Ent2[];
-  tab = 1;
+  tab = 0;
   constructor(private api: Api) {}
 
   clickTab1() {
@@ -42,32 +42,36 @@ export class AppComponent implements OnInit {
   }
 
   async ngOnInit() {
-    // const res = await this.api.get4();
-    // this.data = _.map(_.get(res, 'a1'), (it: Ent) => {
-    //   it.description =
-    //     it.assets +
-    //     ' - ' +
-    //     it.subCategory +
-    //     ' - ' +
-    //     it.eventName +
-    //     ' - ' +
-    //     it.date;
-    //   return it;
-    // });
-    // const a = _.uniq(_.map(this.data, 'importance'));
-    // const b = _.uniq(_.map(this.data, 'status'));
-    // console.log('a', a);
-    // console.log('b', b);
-    // this.data2 = _.get(res, 'a2');
+    setTimeout(() => {
+      this.loadData();
+    }, 3000);
+  }
+
+  async loadData() {
+    const res = await this.api.get4();
+    this.data = _.map(_.get(res, 'a1'), (it: Ent) => {
+      it.description =
+        it.assets +
+        ' - ' +
+        it.subCategory +
+        ' - ' +
+        it.eventName +
+        ' - ' +
+        it.date;
+      return it;
+    });
+    this.data2 = _.get(res, 'a2');
   }
 
   tk: any = '';
   async load() {
     this.loading.txt = 'Loading ...';
-    const r1 = await this.api.get3();
-    const r2 = await this.api.get(this.loading);
-    console.log('news', JSON.stringify(r1));
-    console.log('intel', JSON.stringify(r2));
+    const news = await this.api.get3();
+    const intel = await this.api.get(this.loading);
+    const research = await this.api.fetchMessari();
+    console.log('news', JSON.stringify(news));
+    console.log('intel', JSON.stringify(intel));
+    console.log('research', JSON.stringify(research));
     this.loading.txt = 'Loading Success';
   }
 }

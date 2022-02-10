@@ -144,7 +144,10 @@ export class Api {
     await this.http
       .get('https://java-crypto.herokuapp.com/post/fetchMessari?limit=10000')
       .toPromise();
-    return Promise.resolve(1);
+    const a = await this.http
+      .get('https://java-crypto.herokuapp.com/post/getAll')
+      .toPromise();
+    return Promise.resolve(a);
   }
 
   async loadcoin(tk) {
