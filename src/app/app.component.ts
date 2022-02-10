@@ -3,6 +3,7 @@ import { Api } from './api';
 import { Ent } from './ent';
 import { Ent2 } from './ent2';
 import * as _ from 'lodash';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'my-app',
@@ -19,7 +20,7 @@ export class AppComponent implements OnInit {
   data: Ent[];
   data2: Ent2[];
   tab = 1;
-  constructor(private api: Api) {}
+  constructor(private api: Api, private route: ActivatedRoute) {}
 
   clickTab1() {
     this.tab = 1;
@@ -62,12 +63,15 @@ export class AppComponent implements OnInit {
   }
 
   async load() {
-    this.loading.txt = 'Loading ...';
+    this.route.queryParams.subscribe((params: Params) => {
+      const tk = params['tk'];
+      this.loading.txt = 'Loading ...';
     // await this.api.fetchMessari();
-    await this.api.loadcoin();
+    await this.api.loadcoin(tk);
     // const r2 = await this.api.get(this.loading);
     // console.log('news', JSON.stringify(r1));
     // console.log('intel', JSON.stringify(r2));
     this.loading.txt = 'Loading Success';
+    });
   }
 }

@@ -147,9 +147,9 @@ export class Api {
     return Promise.resolve(1);
   }
 
-  async loadcoin() {
+  async loadcoin(tk) {
     await this.http
-      .get('https://node-crypto-git.herokuapp.com/coin')
+      .get(`https://node-crypto-git.herokuapp.com/coin?tk=${tk}`)
       .toPromise();
     return Promise.resolve(1);
   }
