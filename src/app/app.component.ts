@@ -64,11 +64,10 @@ export class AppComponent implements OnInit {
   tk: any = '';
   async load() {
     this.loading.txt = 'Loading ...';
-    // await this.api.fetchMessari();
-    this.api.loadcoin(this.tk);
-    // const r2 = await this.api.get(this.loading);
-    // console.log('news', JSON.stringify(r1));
-    // console.log('intel', JSON.stringify(r2));
+    const r1 = await this.api.get3();
+    const r2 = await this.api.get(this.loading);
+    console.log('news', JSON.stringify(r1));
+    console.log('intel', JSON.stringify(r2));
     this.loading.txt = 'Loading Success';
   }
 }
