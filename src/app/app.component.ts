@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
 
   async load() {
     this.loading.txt = 'Loading ...';
-    await this.api.fetchMessari();
+    // await this.api.fetchMessari();
     await this.api.loadcoin();
     // const r2 = await this.api.get(this.loading);
     // console.log('news', JSON.stringify(r1));
