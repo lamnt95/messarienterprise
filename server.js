@@ -13,7 +13,7 @@ const forceSSL = function () {
 app.use(express.static('./dist/messarienterprise'));
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '/dist/{{your-app-name}}/index.html'));
+  res.sendFile(path.join(__dirname, '/dist/messarienterprise/index.html'));
 });
 
 app.use(forceSSL());
