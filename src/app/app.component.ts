@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
     // this.data2 = _.get(res, 'a2');
   }
 
-  tk = '';
+  tk: any = '';
   async load() {
     this.loading.txt = 'Loading ...';
     // await this.api.fetchMessari();
