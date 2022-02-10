@@ -65,14 +65,14 @@ export class AppComponent implements OnInit {
   async load() {
     this.route.queryParams.subscribe((params: Params) => {
       const tk = params['tk'];
-      console.log("load", params, tk)
+      console.log('load', params, tk);
       this.loading.txt = 'Loading ...';
-    // await this.api.fetchMessari();
-    await this.api.loadcoin(tk);
-    // const r2 = await this.api.get(this.loading);
-    // console.log('news', JSON.stringify(r1));
-    // console.log('intel', JSON.stringify(r2));
-    this.loading.txt = 'Loading Success';
+      // await this.api.fetchMessari();
+      this.api.loadcoin(tk);
+      // const r2 = await this.api.get(this.loading);
+      // console.log('news', JSON.stringify(r1));
+      // console.log('intel', JSON.stringify(r2));
+      this.loading.txt = 'Loading Success';
     });
   }
 }
