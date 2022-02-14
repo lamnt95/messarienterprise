@@ -84,7 +84,7 @@ export class AppComponent implements OnInit {
     console.log('research', this.research);
     this.loading.txt = 'Loading Success';
     this.saveTextAsFile(this.intel, 'intel.json');
-    this.saveTextAsFile(this.news, 'news.json');
+    this.saveTextAsFile(this.news, 'new.json');
     this.saveTextAsFile(this.research, 'research.json');
   }
 
