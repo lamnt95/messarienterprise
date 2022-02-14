@@ -90,5 +90,34 @@ export class AppComponent implements OnInit {
     console.log('intel', this.intel);
     console.log('research', this.research);
     this.loading.txt = 'Loading Success';
+    this.saveTextAsFile(this.intel, 'intel.json');
+    this.saveTextAsFile(this.news, 'news.json');
+    this.saveTextAsFile(this.research, 'research.json');
+  }
+
+  saveTextAsFile(data, filename) {
+    if (!data) {
+      console.error('Console.save: No data');
+      return;
+    }
+    var blob = new Blob([data], { type: 'text/plain' });
+    var e = document.createEvent('MouseEvents');
+    var a = document.createElement('a');
+
+    a = document.createElement('a');
+    a.download = filename;
+    a.href = window.URL.createObjectURL(blob);
+    a.dataset.downloadurl = ['text/plain', a.download, a.href].join(':');
+    e.initEvent('click', true, false);
+    a.dispatchEvent(e);
+  }
+
+  expFile() {
+    var fileText = '{"a":"1", "b":"2"}';
+    var fileText2 = '{"a":"2", "b":"4"}';
+    var fileName = 'data.json';
+    var fileName2 = 'data2.json';
+    this.saveTextAsFile(fileText, fileName);
+    this.saveTextAsFile(fileText2, fileName2);
   }
 }
