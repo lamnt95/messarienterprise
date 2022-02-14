@@ -114,10 +114,13 @@ export class AppComponent implements OnInit {
 
   expFile() {
     var fileText = '{"a":"1", "b":"2"}';
-    var fileText2 = '{"a":"2", "b":"4"}';
     var fileName = 'data.json';
-    var fileName2 = 'data2.json';
     this.saveTextAsFile(fileText, fileName);
-    this.saveTextAsFile(fileText2, fileName2);
+  }
+
+  runBat() {
+    // console.log('runBat');
+    // var WshShell = new ActiveXObject('WScript.Shell');
+    // WshShell.Run('C:Users\nguyentunglamdeveclaim\test.bat');
   }
 }
