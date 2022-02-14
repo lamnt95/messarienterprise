@@ -3,7 +3,6 @@ import { Api } from './api';
 import { Ent } from './ent';
 import { Ent2 } from './ent2';
 import * as _ from 'lodash';
-import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'my-app',
@@ -19,19 +18,13 @@ export class AppComponent implements OnInit {
   data: Ent[];
   data2: Ent2[];
   tab = 0;
-  constructor(private api: Api, private clipboardApi: ClipboardService) {}
+  constructor(private api: Api) {}
 
-  copyNews() {
-    this.clipboardApi.copyFromContent(this.news);
-  }
+  copyNews() {}
 
-  copyIntel() {
-    this.clipboardApi.copyFromContent(this.intel);
-  }
+  copyIntel() {}
 
-  copyResearch() {
-    this.clipboardApi.copyFromContent(this.research);
-  }
+  copyResearch() {}
 
   clickTab1() {
     this.tab = 1;
