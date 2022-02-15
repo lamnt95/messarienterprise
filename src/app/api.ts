@@ -58,7 +58,7 @@ export class Api {
       }
     }
 
-    loading.txt = '';
+    // loading.txt = '';
 
     return Promise.resolve(res);
   }
