@@ -75,17 +75,14 @@ export class AppComponent implements OnInit {
     this.loading.txt = 'Loading ...';
     const news = await this.api.get3();
     const intel = await this.api.get(this.loading);
-    // const research = await this.api.fetchMessari();
+    const research = await this.api.fetchMessari();
     this.intel = JSON.stringify(intel);
     this.news = JSON.stringify(news);
-    // this.research = JSON.stringify(research);
-    console.log('size array', _.size(this.news), _.size(this.intel));
-    console.log('size str', _.size(news), _.size(intel));
-    // console.log('research', this.research);
+    this.research = JSON.stringify(research);
     this.loading.txt = 'Loading Success';
-    // this.saveTextAsFile(this.intel, 'intel.json');
-    // this.saveTextAsFile(this.news, 'new.json');
-    // this.saveTextAsFile(this.research, 'research.json');
+    this.saveTextAsFile(this.intel, 'intel.json');
+    this.saveTextAsFile(this.news, 'new.json');
+    this.saveTextAsFile(this.research, 'research.json');
   }
 
   saveTextAsFile(data, filename) {
