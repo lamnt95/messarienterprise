@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   };
   data: Ent[];
   data2: Ent2[];
-  tab = 0;
+  tab = 1;
   constructor(private api: Api) {}
 
   copyNews() {}
