@@ -8,7 +8,6 @@ export const favoritel1 = [
   'moonriver',
   'near-protocol',
   'harmony',
-  'kava',
   'karura',
   'nervos-network',
   'flow',
