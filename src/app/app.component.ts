@@ -89,12 +89,30 @@ export class AppComponent implements OnInit {
       }
       return isValid;
     });
+    const keyword = ['incubation', 'evm', 'launch', 'grant', 'incentive'];
     this.dataFavoriteL1 = _.filter(this.data, (it: Ent) => {
       let isValid = false;
       let assetsarr = _.split(it.assets, ',');
       for (let i = 0; i < _.size(assetsarr); i++) {
         let itas = assetsarr[i];
-        if (_.includes(favoritel1, itas)) {
+        if (
+          _.includes(favoritel1, itas) &&
+          (_.includes(_.lowerCase(it.description), 'incubation') ||
+            _.includes(_.lowerCase(it.description), 'evm') ||
+            _.includes(_.lowerCase(it.description), 'launch') ||
+            _.includes(_.lowerCase(it.description), 'grant') ||
+            _.includes(_.lowerCase(it.description), 'incentive') ||
+            _.includes(_.lowerCase(it.update), 'incubation') ||
+            _.includes(_.lowerCase(it.update), 'evm') ||
+            _.includes(_.lowerCase(it.update), 'launch') ||
+            _.includes(_.lowerCase(it.update), 'grant') ||
+            _.includes(_.lowerCase(it.update), 'incentive') ||
+            _.includes(_.lowerCase(it.details), 'incubation') ||
+            _.includes(_.lowerCase(it.details), 'evm') ||
+            _.includes(_.lowerCase(it.details), 'launch') ||
+            _.includes(_.lowerCase(it.details), 'grant') ||
+            _.includes(_.lowerCase(it.details), 'incentive'))
+        ) {
           isValid = true;
         }
       }
