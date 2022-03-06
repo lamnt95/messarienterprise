@@ -3,6 +3,7 @@ import { Api } from './api';
 import { Ent } from './ent';
 import { Ent2 } from './ent2';
 import * as _ from 'lodash';
+import { favorite } from './favorite';
 
 @Component({
   selector: 'my-app',
@@ -16,8 +17,9 @@ export class AppComponent implements OnInit {
     txt: '',
   };
   data: Ent[];
+  dataFavorite: Ent[];
   data2: Ent2[];
-  tab = 1;
+  tab = 100;
   constructor(private api: Api) {}
 
   copyNews() {}
@@ -28,6 +30,10 @@ export class AppComponent implements OnInit {
 
   clickTab1() {
     this.tab = 1;
+  }
+
+  clickTab100() {
+    this.tab = 100;
   }
 
   clickTab2() {
@@ -65,6 +71,21 @@ export class AppComponent implements OnInit {
         it.date;
       return it;
     });
+    debugger;
+    this.dataFavorite = _.filter(this.data, (it: Ent) => {
+      let isValid = false;
+      let assetsarr = _.split(it.assets, ',');
+      for (let i = 0; i < _.size(assetsarr); i++) {
+        let itas = assetsarr[i];
+        if (_.includes(favorite, itas)) {
+          isValid = true;
+        }
+      }
+      return isValid;
+    });
+    console.log('dataFavorite', this.dataFavorite);
+    // const assets = _.uniq(_.split(_.join(_.map(this.data, 'assets'), ','), ','));
+    // console.log('assets', JSON.stringify(assets));
     this.data2 = _.get(res, 'a2');
   }
 
